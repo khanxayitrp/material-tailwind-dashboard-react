@@ -1,15 +1,9 @@
 import PropTypes from "prop-types";
+import { Link as MTLink } from "@material-tailwind/react";
 import { Link, NavLink } from "react-router-dom";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import {
   Avatar,
-  Button,
-  IconButton,
-  Typography,
-} from "@material-tailwind/react";
-import { Link, NavLink } from "react-router-dom";
-import { XMarkIcon } from "@heroicons/react/24/outline";
-import {
   Button,
   IconButton,
   Typography,
