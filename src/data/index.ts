@@ -6,3 +6,8 @@ export * from "@/data/platform-settings-data";
 export * from "@/data/conversations-data";
 export * from "@/data/projects-data";
 export * from "@/data/authors-table-data";
+export * from "./mock-orders";
+export * from "./mock-product-categories";
+export * from "./mock-stores";
+export * from "./mock-payments";
+export * from "./mock-campaigns";
