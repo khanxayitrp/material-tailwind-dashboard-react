@@ -20,6 +20,14 @@ import PaymentCollection from "@/pages/payment-collection";
 import RefundReason from "@/pages/refund-reason";
 import ProductCategories from "@/pages/product-categories";
 import StoreManagement from "@/pages/store-management";
+import OrderAdd from "@/pages/order-add"; // Import OrderAdd
+import OrderEdit from "@/pages/order-edit"; // Import OrderEdit
+import OrderDetail from "@/pages/order-detail"; // Import OrderDetail
+import ProductCategoryAdd from "@/pages/product-category-add"; // Import ProductCategoryAdd
+import ProductCategoryEdit from "@/pages/product-category-edit"; // Import ProductCategoryEdit
+import ProductCategoryDetail from "@/pages/product-category-detail"; // Import ProductCategoryDetail
+import StoreAdd from "@/pages/store-add"; // Import StoreAdd
+import StoreEdit from "@/pages/store-edit"; // Import StoreEdit
 import CustomerGroup from "@/pages/customer-group";
 import Currencies from "@/pages/currencies";
 import ProductAdd from "@/pages/product-add";
@@ -188,6 +196,62 @@ export const routes: RouteGroup[] = [
         path: "/product/detail/:productId",
         element: <ProductDetail />,
         hidden: true, // Hide this route from the main navigation
+      },
+      {
+        icon: <DocumentChartBarIcon {...icon} />, // Or a more appropriate icon
+        name: "Add Order", // This name is for internal reference or if not hidden
+        path: "/orders/add", // Consistent with how product/add is structured
+        element: <OrderAdd />,
+        hidden: true, // To hide it from the sidebar navigation
+      },
+      {
+        icon: <DocumentChartBarIcon {...icon} />, // Placeholder icon
+        name: "Edit Order",
+        path: "/orders/edit/:orderId", // Using :orderId as a URL parameter
+        element: <OrderEdit />,
+        hidden: true,
+      },
+      {
+        icon: <DocumentChartBarIcon {...icon} />, // Placeholder icon
+        name: "Order Details",
+        path: "/orders/detail/:orderId", // Using :orderId as a URL parameter
+        element: <OrderDetail />,
+        hidden: true,
+      },
+      {
+        icon: <DocumentChartBarIcon {...icon} />, // Or a more appropriate icon
+        name: "Add Product Category",
+        path: "/product-categories/add",
+        element: <ProductCategoryAdd />,
+        hidden: true,
+      },
+      {
+        icon: <DocumentChartBarIcon {...icon} />,
+        name: "Edit Product Category",
+        path: "/product-categories/edit/:categoryId",
+        element: <ProductCategoryEdit />,
+        hidden: true,
+      },
+      {
+        icon: <DocumentChartBarIcon {...icon} />,
+        name: "Product Category Details",
+        path: "/product-categories/detail/:categoryId",
+        element: <ProductCategoryDetail />,
+        hidden: true,
+      },
+      {
+        icon: <DocumentChartBarIcon {...icon} />, // Or a more appropriate icon
+        name: "Add Store",
+        path: "/stores/add",
+        element: <StoreAdd />,
+        hidden: true,
+      },
+      {
+        icon: <DocumentChartBarIcon {...icon} />,
+        name: "Edit Store",
+        path: "/stores/edit/:storeId",
+        element: <StoreEdit />,
+        hidden: true,
       },
     ],
   },

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react"; // Ensure useState is imported
 import { Link } from "react-router-dom";
 import {
   Card,
@@ -7,10 +7,30 @@ import {
   Typography,
   Button,
 } from "@material-tailwind/react";
-import { mockOrders } from "@/data/mock-orders"; // Adjusted import path
-import { Order } from "@/types/order"; // Adjusted import path
+import { mockOrders } from "@/data/mock-orders";
+import { Order } from "@/types/order";
 
 export function OrdersManagement() {
+  const [ordersData, setOrdersData] = useState<Order[]>(mockOrders.map(o => ({...o}))); // Use state, ensure deep copy for initial state
+
+  const handleCancelOrder = (orderId: string) => {
+    const orderIndexInState = ordersData.findIndex(o => o.id === orderId);
+    if (orderIndexInState !== -1) {
+      const updatedOrders = ordersData.map((order, index) =>
+        index === orderIndexInState ? { ...order, status: "Cancelled" as Order['status'] } : order
+      );
+
+      // Update the original mockOrders array as well to reflect change if user navigates away and back
+      const orderIndexInMock = mockOrders.findIndex(o => o.id === orderId);
+      if (orderIndexInMock !== -1) {
+        mockOrders[orderIndexInMock].status = "Cancelled";
+      }
+
+      setOrdersData(updatedOrders);
+      console.log(`Order ${orderId} cancelled.`);
+    }
+  };
+
   return (
     <div className="mt-12 mb-8 flex flex-col gap-12">
       <Card>
@@ -18,7 +38,6 @@ export function OrdersManagement() {
           <Typography variant="h6" color="white">
             Orders Management
           </Typography>
-          {/* Basic link, actual add page not yet implemented */}
           <Link to="/dashboard/orders/add">
             <Button color="blue" size="sm">Add New Order</Button>
           </Link>
@@ -43,7 +62,7 @@ export function OrdersManagement() {
               </tr>
             </thead>
             <tbody>
-              {mockOrders.map((order: Order) => ( // Explicitly type order
+              {ordersData.map((order: Order) => (
                 <tr key={order.id}>
                   <td className="py-3 px-5 border-b border-blue-gray-50">
                     <Typography className="text-xs font-semibold text-blue-gray-600">{order.id}</Typography>
@@ -58,16 +77,23 @@ export function OrdersManagement() {
                     <Typography className="text-xs font-semibold text-blue-gray-600">{order.status}</Typography>
                   </td>
                   <td className="py-3 px-5 border-b border-blue-gray-50">
-                    <Typography className="text-xs font-semibold text-blue-gray-600">${order.totalAmount.toFixed(2)}</Typography>
+                    <Typography className="text-xs font-semibold text-blue-gray-600">${order.items.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2)}</Typography>
                   </td>
                   <td className="py-3 px-5 border-b border-blue-gray-50">
-                    {/* Basic links, actual edit/detail pages not yet implemented */}
                     <Link to={`/dashboard/orders/edit/${order.id}`} className="mr-2">
                       <Button color="orange" size="sm">Edit</Button>
                     </Link>
-                    <Link to={`/dashboard/orders/detail/${order.id}`}>
+                    <Link to={`/dashboard/orders/detail/${order.id}`} className="mr-2">
                       <Button color="purple" size="sm">Detail</Button>
                     </Link>
+                    <Button
+                      color="red"
+                      size="sm"
+                      onClick={() => handleCancelOrder(order.id)}
+                      disabled={order.status === "Cancelled" || order.status === "Delivered"}
+                    >
+                      Cancel
+                    </Button>
                   </td>
                 </tr>
               ))}
