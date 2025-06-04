@@ -16,6 +16,7 @@ interface SidenavPage {
   icon: ReactNode;
   name: string;
   path: string;
+  hidden?: boolean;
 }
 
 interface SidenavRouteGroup {
@@ -103,7 +104,9 @@ export function Sidenav({
                 </Typography>
               </li>
             )}
-            {pages.map(({ icon, name, path }: SidenavPage) => (
+            {pages
+            .filter((page) => !page.hidden)
+            .map(({ icon, name, path }: SidenavPage) => (
               <li key={name}>
                 <NavLink to={`/${layout}${path}`}>
                   {({ isActive }) => (

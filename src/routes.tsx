@@ -9,22 +9,22 @@ import {
 } from "@heroicons/react/24/solid";
 import { Home, Profile, Tables, Notifications } from "@/pages/dashboard";
 import { SignIn, SignUp } from "@/pages/auth";
-import OrdersManagement from "@/pages/dashboard/orders-management";
-import ProductManagement from "@/pages/dashboard/product-management";
-import ClaimManagement from "@/pages/dashboard/claim-management";
-import CouponManagement from "@/pages/dashboard/coupon-management";
-import CampaignManagement from "@/pages/dashboard/campaign-management";
-import InventoryItems from "@/pages/dashboard/inventory-items";
-import NotificationManagement from "@/pages/dashboard/notification-management";
-import PaymentCollection from "@/pages/dashboard/payment-collection";
-import RefundReason from "@/pages/dashboard/refund-reason";
-import ProductCategories from "@/pages/dashboard/product-categories";
-import StoreManagement from "@/pages/dashboard/store-management";
-import CustomerGroup from "@/pages/dashboard/customer-group";
-import Currencies from "@/pages/dashboard/currencies";
-import ProductAdd from "@/pages/dashboard/product-add";
-import ProductEdit from "@/pages/dashboard/product-edit";
-import ProductDetail from "@/pages/dashboard/product-detail";
+import OrdersManagement from "@/pages/orders-management";
+import ProductManagement from "@/pages/product-management";
+import ClaimManagement from "@/pages/claim-management";
+import CouponManagement from "@/pages/coupon-management";
+import CampaignManagement from "@/pages/campaign-management";
+import InventoryItems from "@/pages/inventory-items";
+import NotificationManagement from "@/pages/notification-management";
+import PaymentCollection from "@/pages/payment-collection";
+import RefundReason from "@/pages/refund-reason";
+import ProductCategories from "@/pages/product-categories";
+import StoreManagement from "@/pages/store-management";
+import CustomerGroup from "@/pages/customer-group";
+import Currencies from "@/pages/currencies";
+import ProductAdd from "@/pages/product-add";
+import ProductEdit from "@/pages/product-edit";
+import ProductDetail from "@/pages/product-detail";
 import type { ReactNode, JSX } from 'react'; // Import ReactNode and JSX
 
 // Define interfaces for the route structures
@@ -33,6 +33,8 @@ interface PageRoute {
   name: string;
   path: string;
   element: ReactNode; // Components like <Home /> are ReactNode or JSX.Element
+  subRoutes?: PageRoute[]; // Add this for nested routes
+  hidden?: boolean; // Optional property to hide the route
 }
 
 interface RouteGroup {
@@ -85,25 +87,45 @@ export const routes: RouteGroup[] = [
         name: "Product Management",
         path: "/product-management",
         element: <ProductManagement />,
+        // subRoutes: [
+        //   {
+        //     icon: <DocumentChartBarIcon {...icon} />,
+        //     name: "Add Product",
+        //     path: "/product/add",
+        //     element: <ProductAdd />,
+        //   },
+        //   {
+        //     icon: <DocumentChartBarIcon {...icon} />,
+        //     name: "Edit Product",
+        //     path: "/product/edit/:productId",
+        //     element: <ProductEdit />,
+        //   },
+        //   {
+        //     icon: <DocumentChartBarIcon {...icon} />,
+        //     name: "Product Details",
+        //     path: "/product/detail/:productId",
+        //     element: <ProductDetail />,
+        //   },
+        // ]
       },
-      {
-        icon: <DocumentChartBarIcon {...icon} />,
-        name: "Claim Management",
-        path: "/claim-management",
-        element: <ClaimManagement />,
-      },
-      {
-        icon: <DocumentChartBarIcon {...icon} />,
-        name: "Coupon Management",
-        path: "/coupon-management",
-        element: <CouponManagement />,
-      },
-      {
-        icon: <DocumentChartBarIcon {...icon} />,
-        name: "Campaign Management",
-        path: "/campaign-management",
-        element: <CampaignManagement />,
-      },
+      // {
+      //   icon: <DocumentChartBarIcon {...icon} />,
+      //   name: "Claim Management",
+      //   path: "/claim-management",
+      //   element: <ClaimManagement />,
+      // },
+      // {
+      //   icon: <DocumentChartBarIcon {...icon} />,
+      //   name: "Coupon Management",
+      //   path: "/coupon-management",
+      //   element: <CouponManagement />,
+      // },
+      // {
+      //   icon: <DocumentChartBarIcon {...icon} />,
+      //   name: "Campaign Management",
+      //   path: "/campaign-management",
+      //   element: <CampaignManagement />,
+      // },
       {
         icon: <DocumentChartBarIcon {...icon} />,
         name: "Inventory Items",
@@ -112,22 +134,16 @@ export const routes: RouteGroup[] = [
       },
       {
         icon: <DocumentChartBarIcon {...icon} />,
-        name: "Notification Management",
-        path: "/notification-management",
-        element: <NotificationManagement />,
-      },
-      {
-        icon: <DocumentChartBarIcon {...icon} />,
         name: "Payment Collection",
         path: "/payment-collection",
         element: <PaymentCollection />,
       },
-      {
-        icon: <DocumentChartBarIcon {...icon} />,
-        name: "Refund Reason",
-        path: "/refund-reason",
-        element: <RefundReason />,
-      },
+      // {
+      //   icon: <DocumentChartBarIcon {...icon} />,
+      //   name: "Refund Reason",
+      //   path: "/refund-reason",
+      //   element: <RefundReason />,
+      // },
       {
         icon: <DocumentChartBarIcon {...icon} />,
         name: "Product Categories",
@@ -140,35 +156,38 @@ export const routes: RouteGroup[] = [
         path: "/store-management",
         element: <StoreManagement />,
       },
-      {
-        icon: <DocumentChartBarIcon {...icon} />,
-        name: "Customer Group",
-        path: "/customer-group",
-        element: <CustomerGroup />,
-      },
-      {
-        icon: <DocumentChartBarIcon {...icon} />,
-        name: "Currencies",
-        path: "/currencies",
-        element: <Currencies />,
-      },
+      // {
+      //   icon: <DocumentChartBarIcon {...icon} />,
+      //   name: "Customer Group",
+      //   path: "/customer-group",
+      //   element: <CustomerGroup />,
+      // },
+      // {
+      //   icon: <DocumentChartBarIcon {...icon} />,
+      //   name: "Currencies",
+      //   path: "/currencies",
+      //   element: <Currencies />,
+      // },
       {
         icon: <DocumentChartBarIcon {...icon} />, // Placeholder icon
         name: "Add Product",
         path: "/product/add",
         element: <ProductAdd />,
+        hidden: true, // Hide this route from the main navigation
       },
       {
         icon: <DocumentChartBarIcon {...icon} />, // Placeholder icon
         name: "Edit Product",
         path: "/product/edit/:productId",
         element: <ProductEdit />,
+        hidden: true, // Hide this route from the main navigation
       },
       {
         icon: <DocumentChartBarIcon {...icon} />, // Placeholder icon
         name: "Product Details",
         path: "/product/detail/:productId",
         element: <ProductDetail />,
+        hidden: true, // Hide this route from the main navigation
       },
     ],
   },

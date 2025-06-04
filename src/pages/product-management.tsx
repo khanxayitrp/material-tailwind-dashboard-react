@@ -57,8 +57,11 @@ export function ProductManagement() {
                     <Typography className="text-xs font-semibold text-blue-gray-600">{product.stock}</Typography>
                   </td>
                   <td className="py-3 px-5 border-b border-blue-gray-50">
-                    <Typography as="a" href="#" className="text-xs font-semibold text-blue-gray-600 mr-2">Edit</Typography>
-                    <Typography as="a" href="#" className="text-xs font-semibold text-blue-gray-600">Details</Typography>
+                    <Typography as="a" href="#" className="text-xs font-semibold text-blue-gray-600 mr-2">
+                      <Link to={`/dashboard/product/edit/${product.id}`}>
+                        <Button color="orange" size="sm">Edit</Button>
+                      </Link></Typography>
+                    <Typography as="a" href="#" className="text-xs font-semibold text-blue-gray-600"><Link to={`/dashboard/product/detail/${product.id}`}><Button color="purple" size="sm">Detail</Button></Link></Typography>
                   </td>
                 </tr>
               ))}
