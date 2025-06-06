@@ -12,8 +12,8 @@ import {
   Option,
   Checkbox,
 } from "@material-tailwind/react";
-import { mockCoupons } from "../../data/mock-coupons";
-import { Coupon } from "../../types";
+import { mockCoupons } from "../data/mock-coupons";
+import { Coupon } from "../types/coupon";
 
 type DiscountType = 'percentage' | 'fixed';
 

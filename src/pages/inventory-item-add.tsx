@@ -8,8 +8,8 @@ import {
   Button,
   Typography,
 } from "@material-tailwind/react";
-import { mockInventoryItems } from "../../data/mock-inventory-items";
-import { InventoryItem } from "../../types";
+import { mockInventoryItems } from "../data/mock-inventory-items";
+import { InventoryItem } from "../types/inventory-item";
 
 export function InventoryItemAdd() {
   const navigate = useNavigate();

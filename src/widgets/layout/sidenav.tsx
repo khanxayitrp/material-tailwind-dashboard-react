@@ -90,7 +90,7 @@ export function Sidenav({
           <XMarkIcon strokeWidth={2.5} className={`h-5 w-5 ${sidenavType === "dark" ? "text-white" : "text-blue-gray-900"}`} />
         </IconButton>
       </div>
-      <div className="m-4">
+      <div className="m-4 overflow-y-auto h-[calc(100vh-32px-64px)]">
         {routes.map(({ layout, title, pages }: SidenavRouteGroup, key: number) => (
           <ul key={key} className="mb-4 flex flex-col gap-1">
             {title && (

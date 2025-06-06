@@ -9,8 +9,8 @@ import {
   Textarea,
   Typography,
 } from "@material-tailwind/react";
-import { mockBrands } from "../../data/mock-brands";
-import { Brand } from "../../types";
+import { mockBrands } from "../data/mock-brands";
+import { Brand } from "../types/brand";
 
 export function BrandEdit() {
   const { id } = useParams<{ id: string }>();

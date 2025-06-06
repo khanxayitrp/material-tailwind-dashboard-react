@@ -7,8 +7,8 @@ import {
   Typography,
   Button,
 } from "@material-tailwind/react";
-import { mockInventoryItems } from "../../data/mock-inventory-items";
-import { InventoryItem } from "../../types";
+import { mockInventoryItems } from "../data/mock-inventory-items";
+import { InventoryItem } from "../types/inventory-item";
 
 const TABLE_HEAD = ["ID", "Product ID", "SKU", "Quantity", "Location", "Last Stock Update", "Actions"];
 

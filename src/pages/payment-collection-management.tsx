@@ -7,8 +7,8 @@ import {
   Typography,
   Button,
 } from "@material-tailwind/react";
-import { mockPaymentCollections } from "../../data/mock-payment-collections";
-import { PaymentCollection } from "../../types";
+import { mockPaymentCollections } from "../data/mock-payment-collections";
+import { PaymentCollection } from "../types/payment-collection";
 
 const TABLE_HEAD = ["ID", "Order ID", "Method", "Amount", "Status", "Date", "Actions"];
 

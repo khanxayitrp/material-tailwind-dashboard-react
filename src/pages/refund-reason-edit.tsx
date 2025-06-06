@@ -10,8 +10,8 @@ import {
   Typography,
   Checkbox,
 } from "@material-tailwind/react";
-import { mockRefundReasons } from "../../data/mock-refund-reasons";
-import { RefundReason } from "../../types";
+import { mockRefundReasons } from "../data/mock-refund-reasons";
+import { RefundReason } from "../types/refund-reason";
 
 export function RefundReasonEdit() {
   const { id } = useParams<{ id: string }>();

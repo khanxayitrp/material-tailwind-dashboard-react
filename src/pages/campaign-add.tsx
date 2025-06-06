@@ -11,8 +11,8 @@ import {
   Select,
   Option,
 } from "@material-tailwind/react";
-import { mockCampaigns } from "../../data/mock-campaigns";
-import { Campaign } from "../../types";
+import { mockCampaigns } from "@/data/mock-campaigns";
+import { Campaign } from "@/types/campaign";
 
 // Status type as defined in src/types/campaign.ts
 type CampaignStatusActual = "Planning" | "Active" | "Completed" | "Cancelled";

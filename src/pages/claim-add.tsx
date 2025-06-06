@@ -11,8 +11,8 @@ import {
   Select,
   Option,
 } from "@material-tailwind/react";
-import { mockClaims } from "../../data/mock-claims";
-import { Claim } from "../../types";
+import { mockClaims } from "../data/mock-claims";
+import { Claim } from "../types/claim";
 
 type ClaimStatus = 'pending' | 'approved' | 'rejected';
 

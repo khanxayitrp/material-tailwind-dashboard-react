@@ -7,8 +7,8 @@ import {
   Typography,
   Button,
 } from "@material-tailwind/react";
-import { mockClaims } from "../../data/mock-claims";
-import { Claim } from "../../types";
+import { mockClaims } from "../data/mock-claims";
+import { Claim } from "../types/claim";
 
 const TABLE_HEAD = ["ID", "Order ID", "Customer ID", "Reason", "Status", "Claim Date", "Resolution", "Actions"];
 

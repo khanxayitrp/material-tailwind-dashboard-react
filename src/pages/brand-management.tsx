@@ -7,8 +7,8 @@ import {
   Typography,
   Button,
 } from "@material-tailwind/react";
-import { mockBrands } from "../../data/mock-brands";
-import { Brand } from "../../types";
+import { mockBrands } from "../data/mock-brands";
+import { Brand } from "../types/brand";
 
 export function BrandManagement() {
   const [brands, setBrands] = useState<Brand[]>(mockBrands);

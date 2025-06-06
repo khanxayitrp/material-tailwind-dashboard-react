@@ -7,8 +7,8 @@ import {
   Typography,
   Button,
 } from "@material-tailwind/react";
-import { mockCoupons } from "../../data/mock-coupons";
-import { Coupon } from "../../types";
+import { mockCoupons } from "../data/mock-coupons";
+import { Coupon } from "../types/coupon";
 
 const TABLE_HEAD = ["ID", "Code", "Type", "Value", "Expires", "Active", "Description", "Actions"];
 

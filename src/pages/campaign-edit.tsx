@@ -11,8 +11,8 @@ import {
   Select,
   Option,
 } from "@material-tailwind/react";
-import { mockCampaigns } from "../../data/mock-campaigns";
-import { Campaign } from "../../types";
+import { mockCampaigns } from "@/data/mock-campaigns";
+import { Campaign } from "@/types/campaign";
 
 type CampaignStatusActual = "Planning" | "Active" | "Completed" | "Cancelled";
 

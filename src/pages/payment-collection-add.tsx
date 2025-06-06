@@ -10,8 +10,8 @@ import {
   Select,
   Option,
 } from "@material-tailwind/react";
-import { mockPaymentCollections } from "../../data/mock-payment-collections";
-import { PaymentCollection } from "../../types";
+import { mockPaymentCollections } from "../data/mock-payment-collections";
+import { PaymentCollection } from "../types/payment-collection";
 
 type PaymentStatus = 'pending' | 'completed' | 'failed';
 

@@ -7,8 +7,8 @@ import {
   Typography,
   Button,
 } from "@material-tailwind/react";
-import { mockRefundReasons } from "../../data/mock-refund-reasons";
-import { RefundReason } from "../../types";
+import { mockRefundReasons } from "../data/mock-refund-reasons";
+import { RefundReason } from "../types/refund-reason";
 
 const TABLE_HEAD = ["ID", "Name", "Description", "Is Active", "Actions"];
 
