@@ -5,20 +5,25 @@ import {
   InformationCircleIcon,
   ServerStackIcon,
   RectangleStackIcon,
-  DocumentChartBarIcon, // Added DocumentChartBarIcon
+  DocumentChartBarIcon,
+  CurrencyDollarIcon,
+  CreditCardIcon,
+  ArchiveBoxIcon,
+  TicketIcon,
+  ExclamationTriangleIcon, // Added ExclamationTriangleIcon
 } from "@heroicons/react/24/solid";
 import { Home, Profile, Tables, Notifications } from "@/pages/dashboard";
 import { SignIn, SignUp } from "@/pages/auth";
-import { BrandManagement, BrandAdd, BrandEdit, CampaignAdd, CampaignEdit } from "@/pages"; // Import Brand & Campaign pages
+import { BrandManagement, BrandAdd, BrandEdit, CampaignAdd, CampaignEdit, RefundReasonManagement, RefundReasonAdd, RefundReasonEdit, PaymentCollectionManagement, PaymentCollectionAdd, PaymentCollectionEdit, InventoryItemsManagement, InventoryItemAdd, InventoryItemEdit, CouponManagement, CouponAdd, CouponEdit, ClaimManagement, ClaimAdd, ClaimEdit } from "@/pages"; // Import all necessary pages
 import OrdersManagement from "@/pages/orders-management";
 import ProductManagement from "@/pages/product-management";
-import ClaimManagement from "@/pages/claim-management";
-import CouponManagement from "@/pages/coupon-management";
+// import ClaimManagement from "@/pages/claim-management"; // Old one, replaced by Management component with same name
+// import CouponManagement from "@/pages/coupon-management"; // Old one, replaced by Management component with same name
 import CampaignManagement from "@/pages/campaign-management";
-import InventoryItems from "@/pages/inventory-items";
+// import InventoryItems from "@/pages/inventory-items"; // Old one, replaced by Management
 import NotificationManagement from "@/pages/notification-management";
-import PaymentCollection from "@/pages/payment-collection";
-import RefundReason from "@/pages/refund-reason";
+// import PaymentCollection from "@/pages/payment-collection"; // Old one, replaced by Management
+import RefundReason from "@/pages/refund-reason"; // This seems to be an old page component, ensure it's not confused with RefundReasonManagement
 import ProductCategories from "@/pages/product-categories";
 import StoreManagement from "@/pages/store-management";
 import OrderAdd from "@/pages/order-add"; // Import OrderAdd
@@ -137,36 +142,106 @@ export const routes: RouteGroup[] = [
         element: <CampaignEdit />,
         hidden: true,
       },
-      // {
-      //   icon: <DocumentChartBarIcon {...icon} />,
-      //   name: "Claim Management",
-      //   path: "/claim-management",
-      //   element: <ClaimManagement />,
-      // },
-      // {
-      //   icon: <DocumentChartBarIcon {...icon} />,
-      //   name: "Coupon Management",
-      //   path: "/coupon-management",
-      //   element: <CouponManagement />,
-      // },
       {
-        icon: <DocumentChartBarIcon {...icon} />,
+        icon: <ExclamationTriangleIcon {...icon} />,
+        name: "Claim Management",
+        path: "/claims",
+        element: <ClaimManagement />,
+      },
+      {
+        icon: <ExclamationTriangleIcon {...icon} />,
+        name: "Add Claim",
+        path: "/claims/add",
+        element: <ClaimAdd />,
+        hidden: true,
+      },
+      {
+        icon: <ExclamationTriangleIcon {...icon} />,
+        name: "Edit Claim",
+        path: "/claims/edit/:id",
+        element: <ClaimEdit />,
+        hidden: true,
+      },
+      {
+        icon: <TicketIcon {...icon} />,
+        name: "Coupon Management",
+        path: "/coupons", // Standardized path
+        element: <CouponManagement />,
+      },
+      {
+        icon: <TicketIcon {...icon} />, // Placeholder icon
+        name: "Add Coupon",
+        path: "/coupons/add",
+        element: <CouponAdd />,
+        hidden: true,
+      },
+      {
+        icon: <TicketIcon {...icon} />, // Placeholder icon
+        name: "Edit Coupon",
+        path: "/coupons/edit/:id",
+        element: <CouponEdit />,
+        hidden: true,
+      },
+      {
+        icon: <ArchiveBoxIcon {...icon} />,
         name: "Inventory Items",
         path: "/inventory-items",
-        element: <InventoryItems />,
+        element: <InventoryItemsManagement />,
       },
       {
-        icon: <DocumentChartBarIcon {...icon} />,
-        name: "Payment Collection",
-        path: "/payment-collection",
-        element: <PaymentCollection />,
+        icon: <ArchiveBoxIcon {...icon} />, // Placeholder icon
+        name: "Add Inventory Item",
+        path: "/inventory-items/add",
+        element: <InventoryItemAdd />,
+        hidden: true,
       },
-      // {
-      //   icon: <DocumentChartBarIcon {...icon} />,
-      //   name: "Refund Reason",
-      //   path: "/refund-reason",
-      //   element: <RefundReason />,
-      // },
+      {
+        icon: <ArchiveBoxIcon {...icon} />, // Placeholder icon
+        name: "Edit Inventory Item",
+        path: "/inventory-items/edit/:id",
+        element: <InventoryItemEdit />,
+        hidden: true,
+      },
+      {
+        icon: <CreditCardIcon {...icon} />,
+        name: "Payment Collections",
+        path: "/payment-collections", // Standardized path
+        element: <PaymentCollectionManagement />,
+      },
+      {
+        icon: <CreditCardIcon {...icon} />, // Placeholder icon
+        name: "Add Payment Collection",
+        path: "/payment-collections/add",
+        element: <PaymentCollectionAdd />,
+        hidden: true,
+      },
+      {
+        icon: <CreditCardIcon {...icon} />, // Placeholder icon
+        name: "Edit Payment Collection",
+        path: "/payment-collections/edit/:id",
+        element: <PaymentCollectionEdit />,
+        hidden: true,
+      },
+      {
+        icon: <CurrencyDollarIcon {...icon} />,
+        name: "Refund Reasons",
+        path: "/refund-reasons",
+        element: <RefundReasonManagement />,
+      },
+      {
+        icon: <CurrencyDollarIcon {...icon} />, // Placeholder icon
+        name: "Add Refund Reason",
+        path: "/refund-reasons/add",
+        element: <RefundReasonAdd />,
+        hidden: true,
+      },
+      {
+        icon: <CurrencyDollarIcon {...icon} />, // Placeholder icon
+        name: "Edit Refund Reason",
+        path: "/refund-reasons/edit/:id",
+        element: <RefundReasonEdit />,
+        hidden: true,
+      },
       {
         icon: <DocumentChartBarIcon {...icon} />,
         name: "Product Categories",

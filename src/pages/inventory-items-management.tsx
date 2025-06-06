@@ -7,24 +7,24 @@ import {
   Typography,
   Button,
 } from "@material-tailwind/react";
-import { mockCoupons } from "../../data/mock-coupons";
-import { Coupon } from "../../types";
+import { mockInventoryItems } from "../../data/mock-inventory-items";
+import { InventoryItem } from "../../types";
 
-const TABLE_HEAD = ["ID", "Code", "Type", "Value", "Expires", "Active", "Description", "Actions"];
+const TABLE_HEAD = ["ID", "Product ID", "SKU", "Quantity", "Location", "Last Stock Update", "Actions"];
 
-export function CouponManagement() {
-  const [coupons, setCoupons] = useState<Coupon[]>(mockCoupons);
+export function InventoryItemsManagement() {
+  const [inventoryItems, setInventoryItems] = useState<InventoryItem[]>(mockInventoryItems);
 
   const handleDelete = (idToDelete: string) => {
-    if (window.confirm("Are you sure you want to delete this coupon?")) {
-      const updatedCoupons = coupons.filter((coupon) => coupon.id !== idToDelete);
-      setCoupons(updatedCoupons);
+    if (window.confirm("Are you sure you want to delete this inventory item?")) {
+      const updatedItems = inventoryItems.filter((item) => item.id !== idToDelete);
+      setInventoryItems(updatedItems);
 
-      const couponIndexInMock = mockCoupons.findIndex(
-        (coupon) => coupon.id === idToDelete
+      const itemIndexInMock = mockInventoryItems.findIndex(
+        (item) => item.id === idToDelete
       );
-      if (couponIndexInMock !== -1) {
-        mockCoupons.splice(couponIndexInMock, 1);
+      if (itemIndexInMock !== -1) {
+        mockInventoryItems.splice(itemIndexInMock, 1);
       }
     }
   };
@@ -35,15 +35,15 @@ export function CouponManagement() {
         <div className="mb-8 flex items-center justify-between gap-8">
           <div>
             <Typography variant="h5" color="blue-gray">
-              Coupon Management
+              Inventory Items Management
             </Typography>
             <Typography color="gray" className="mt-1 font-normal">
-              Manage your coupons and promotions
+              Manage your inventory items
             </Typography>
           </div>
           <div className="flex shrink-0 flex-col gap-2 sm:flex-row">
-            <Link to="/dashboard/coupons/add">
-              <Button>Add New Coupon</Button>
+            <Link to="/dashboard/inventory-items/add">
+              <Button>Add New Item</Button>
             </Link>
           </div>
         </div>
@@ -69,8 +69,8 @@ export function CouponManagement() {
             </tr>
           </thead>
           <tbody>
-            {coupons.map(({ id, code, discountType, discountValue, expirationDate, isActive, description }, index) => {
-              const isLast = index === coupons.length - 1;
+            {inventoryItems.map(({ id, productId, sku, quantity, location, lastStockUpdate }, index) => {
+              const isLast = index === inventoryItems.length - 1;
               const classes = isLast
                 ? "p-4"
                 : "p-4 border-b border-blue-gray-50";
@@ -78,14 +78,13 @@ export function CouponManagement() {
               return (
                 <tr key={id}>
                   <td className={classes}><Typography variant="small" color="blue-gray" className="font-normal">{id}</Typography></td>
-                  <td className={classes}><Typography variant="small" color="blue-gray" className="font-normal">{code}</Typography></td>
-                  <td className={classes}><Typography variant="small" color="blue-gray" className="font-normal">{discountType}</Typography></td>
-                  <td className={classes}><Typography variant="small" color="blue-gray" className="font-normal">{discountValue}{discountType === 'percentage' ? '%' : '$'}</Typography></td>
-                  <td className={classes}><Typography variant="small" color="blue-gray" className="font-normal">{new Date(expirationDate).toLocaleDateString()}</Typography></td>
-                  <td className={classes}><Typography variant="small" color="blue-gray" className="font-normal">{isActive ? "Yes" : "No"}</Typography></td>
-                  <td className={classes}><Typography variant="small" color="blue-gray" className="font-normal truncate max-w-xs">{description || "N/A"}</Typography></td>
+                  <td className={classes}><Typography variant="small" color="blue-gray" className="font-normal">{productId}</Typography></td>
+                  <td className={classes}><Typography variant="small" color="blue-gray" className="font-normal">{sku}</Typography></td>
+                  <td className={classes}><Typography variant="small" color="blue-gray" className="font-normal">{quantity}</Typography></td>
+                  <td className={classes}><Typography variant="small" color="blue-gray" className="font-normal">{location}</Typography></td>
+                  <td className={classes}><Typography variant="small" color="blue-gray" className="font-normal">{new Date(lastStockUpdate).toLocaleDateString()}</Typography></td>
                   <td className={classes}>
-                    <Link to={`/dashboard/coupons/edit/${id}`}>
+                    <Link to={`/dashboard/inventory-items/edit/${id}`}>
                       <Button variant="outlined" size="sm" className="mr-2">
                         Edit
                       </Button>
@@ -109,4 +108,4 @@ export function CouponManagement() {
   );
 }
 
-export default CouponManagement;
+export default InventoryItemsManagement;
