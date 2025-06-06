@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Card,
@@ -7,10 +7,28 @@ import {
   Typography,
   Button,
 } from "@material-tailwind/react";
-import { mockCampaigns } from "@/data/mock-campaigns"; // Adjusted import path
-import { Campaign } from "@/types/campaign"; // Adjusted import path
+import { mockCampaigns } from "@/data/mock-campaigns";
+import { Campaign } from "@/types/campaign";
 
 export function CampaignManagement() {
+  const [campaigns, setCampaigns] = useState<Campaign[]>(mockCampaigns);
+
+  const handleDeleteCampaign = (idToDelete: string) => {
+    if (window.confirm("Are you sure you want to delete this campaign?")) {
+      const updatedCampaigns = campaigns.filter(
+        (campaign) => campaign.id !== idToDelete
+      );
+      setCampaigns(updatedCampaigns);
+
+      const campaignIndexInMock = mockCampaigns.findIndex(
+        (campaign) => campaign.id === idToDelete
+      );
+      if (campaignIndexInMock !== -1) {
+        mockCampaigns.splice(campaignIndexInMock, 1);
+      }
+    }
+  };
+
   return (
     <div className="mt-12 mb-8 flex flex-col gap-12">
       <Card>
@@ -43,7 +61,7 @@ export function CampaignManagement() {
               </tr>
             </thead>
             <tbody>
-              {mockCampaigns.map((campaign: Campaign) => ( // Explicitly type campaign
+              {campaigns.map((campaign: Campaign) => (
                 <tr key={campaign.id}>
                   <td className="py-3 px-5 border-b border-blue-gray-50">
                     <Typography className="text-xs font-semibold text-blue-gray-600">{campaign.id}</Typography>
@@ -64,11 +82,18 @@ export function CampaignManagement() {
                     <Typography className="text-xs font-semibold text-blue-gray-600">{campaign.status}</Typography>
                   </td>
                   <td className="py-3 px-5 border-b border-blue-gray-50">
-                    {/* Basic links, actual edit/detail pages not yet implemented */}
                     <Link to={`/dashboard/campaigns/edit/${campaign.id}`} className="mr-2">
                       <Button color="orange" size="sm">Edit</Button>
                     </Link>
-                    <Link to={`/dashboard/campaigns/detail/${campaign.id}`}>
+                    <Button
+                      color="red"
+                      size="sm"
+                      onClick={() => handleDeleteCampaign(campaign.id)}
+                      className="mr-2"
+                    >
+                      Delete
+                    </Button>
+                    <Link to={`/dashboard/campaigns/detail/${campaign.id}`}> {/* Assuming detail page might exist or be added */}
                       <Button color="purple" size="sm">Detail</Button>
                     </Link>
                   </td>
