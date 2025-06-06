@@ -14,13 +14,13 @@ interface FooterProps {
 }
 
 // Default props values
-const defaultBrandName = "Creative Tim";
-const defaultBrandLink = "https://www.creative-tim.com";
+const defaultBrandName = "Auton Laos";
+const defaultBrandLink = "https://www.auton.kr";
 const defaultRoutes: FooterRoute[] = [
-  { name: "Creative Tim", path: "https://www.creative-tim.com" },
-  { name: "About Us", path: "https://www.creative-tim.com/presentation" },
-  { name: "Blog", path: "https://www.creative-tim.com/blog" },
-  { name: "License", path: "https://www.creative-tim.com/license" },
+  // { name: "Creative Tim", path: "https://www.creative-tim.com" },
+  // { name: "About Us", path: "https://www.creative-tim.com/presentation" },
+  // { name: "Blog", path: "https://www.creative-tim.com/blog" },
+  // { name: "License", path: "https://www.creative-tim.com/license" },
 ];
 
 export function Footer({
@@ -44,7 +44,7 @@ export function Footer({
           >
             {brandName} {/* brandName is string */}
           </a>{" "}
-          for a better web.
+          
         </Typography>
         <ul className="flex items-center gap-4">
           {/* routes is FooterRoute[] */}

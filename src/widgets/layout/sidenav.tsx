@@ -47,7 +47,7 @@ type MaterialTailwindAction =
 
 type MaterialTailwindDispatch = Dispatch<MaterialTailwindAction>;
 
-const defaultBrandName = "Material Tailwind React";
+const defaultBrandName = "Admin panel CMS";
 // const defaultBrandImg = "/img/logo-ct.png"; // Not directly used in this component's render
 
 export function Sidenav({
