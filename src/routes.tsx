@@ -9,6 +9,7 @@ import {
 } from "@heroicons/react/24/solid";
 import { Home, Profile, Tables, Notifications } from "@/pages/dashboard";
 import { SignIn, SignUp } from "@/pages/auth";
+import { BrandManagement, BrandAdd, BrandEdit, CampaignAdd, CampaignEdit } from "@/pages"; // Import Brand & Campaign pages
 import OrdersManagement from "@/pages/orders-management";
 import ProductManagement from "@/pages/product-management";
 import ClaimManagement from "@/pages/claim-management";
@@ -116,6 +117,26 @@ export const routes: RouteGroup[] = [
         //   },
         // ]
       },
+      {
+        icon: <DocumentChartBarIcon {...icon} />,
+        name: "Campaign Management",
+        path: "/campaigns", // Corrected path
+        element: <CampaignManagement />,
+      },
+      {
+        icon: <DocumentChartBarIcon {...icon} />, // Placeholder icon
+        name: "Add Campaign",
+        path: "/campaigns/add",
+        element: <CampaignAdd />,
+        hidden: true,
+      },
+      {
+        icon: <DocumentChartBarIcon {...icon} />, // Placeholder icon
+        name: "Edit Campaign",
+        path: "/campaigns/edit/:id",
+        element: <CampaignEdit />,
+        hidden: true,
+      },
       // {
       //   icon: <DocumentChartBarIcon {...icon} />,
       //   name: "Claim Management",
@@ -127,12 +148,6 @@ export const routes: RouteGroup[] = [
       //   name: "Coupon Management",
       //   path: "/coupon-management",
       //   element: <CouponManagement />,
-      // },
-      // {
-      //   icon: <DocumentChartBarIcon {...icon} />,
-      //   name: "Campaign Management",
-      //   path: "/campaign-management",
-      //   element: <CampaignManagement />,
       // },
       {
         icon: <DocumentChartBarIcon {...icon} />,
@@ -196,6 +211,26 @@ export const routes: RouteGroup[] = [
         path: "/product/detail/:productId",
         element: <ProductDetail />,
         hidden: true, // Hide this route from the main navigation
+      },
+      {
+        icon: <DocumentChartBarIcon {...icon} />,
+        name: "Brand Management",
+        path: "/brands",
+        element: <BrandManagement />,
+      },
+      {
+        icon: <DocumentChartBarIcon {...icon} />, // Placeholder icon, won't be shown in sidebar
+        name: "Add Brand",
+        path: "/brands/add",
+        element: <BrandAdd />,
+        hidden: true,
+      },
+      {
+        icon: <DocumentChartBarIcon {...icon} />, // Placeholder icon, won't be shown in sidebar
+        name: "Edit Brand",
+        path: "/brands/edit/:id",
+        element: <BrandEdit />,
+        hidden: true,
       },
       {
         icon: <DocumentChartBarIcon {...icon} />, // Or a more appropriate icon
